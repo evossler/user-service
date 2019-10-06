@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: starter-service
+      
+server:
+  port: 8080
+
+
+dataServiceBaseUrl:  https://5c3ce12c29429300143fe570.mockapi.io/api
+---
+spring:
+  profiles:
+    local
+
+---
+spring:
+  profiles:
+    development
+
+---
+spring:
+  profiles:
+    test
+
+---
+spring:
+  profiles:
+    stage
+
+---
+spring:
+  profiles:
+    production
