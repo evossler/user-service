@@ -54,10 +54,20 @@ $ docker run -p 8080:8080  user-service
 
 **Informational**
 ```
-The problem description does not define requirements for the proper handling of some potential edge cases, so I have done what seems reasonable, and left relevant comments in the code.
+The problem description does not define requirements for the proper handling of some potential edge cases, so I have done 
+what seems reasonable, and left relevant comments in the code.
 
-If the same user (same "id" value) appears in both the /registeredusers and /unregisteredusers data from the external API we are taking our input from, only the registered one will appear in our output.  This case does not occur because the external service is a mock returning static data, but in the real world this condition could arise due to the underlying data changing as the two sets are being retrieved.
+If the same user (same "id" value) appears in both the /registeredusers and /unregisteredusers data from the external API we 
+are taking our input from, only the registered one will appear in our output.  This case does not occur because the external 
+service is a mock returning static data, but in the real world this condition could arise due to the underlying data changing 
+as the two sets are being retrieved.
 
-If a project membership relationship returned by the /projectmemberships API references a userId that does not correspond to a user seen in either /registeredusers data or the /unregisteredusers data, that project membership will not be reflected in our output.
+If a project membership relationship returned by the /projectmemberships API references a userId that does not correspond to a 
+user seen in either /registeredusers data or the /unregisteredusers data, that project membership will not be reflected in our 
+output.
 
-Having no information about the expected volume of requests to this endpoint, nor any means of being notified when the data from the backing API changes, and having no business rules given about how fresh our results must be in the event of such changes, I have opted not to implement any cacheing.  Each request to the /users endpoint will result in data being fetched from the three backing API endpoints to compose the response.  Given that our backing API is a static mock, I suppose the data will never change, but I'm trying to imagine the real-world implications here.
+Having no information about the expected volume of requests to this endpoint, nor any means of being notified when the data 
+from the backing API changes, and having no business rules given about how fresh our results must be in the event of such 
+changes, I have opted not to implement any cacheing.  Each request to the /users endpoint will result in data being fetched 
+from the three backing API endpoints to compose the response.  Given that our backing API is a static mock, I suppose the data 
+will never change, but I'm trying to imagine the real-world implications here.
