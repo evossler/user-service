@@ -50,7 +50,7 @@ $ ./gradlew assemble
 $ docker build -t user-service .
 $ docker run -p 8080:8080  user-service
 ```
-
+If you run the docker container as shown here, the instructions for seeing the output of the endpoint are the same as given above.  If you would like, however, you could run the service on a different port, by changing the -p argument accordingly.
 
 **Informational**
 ```
